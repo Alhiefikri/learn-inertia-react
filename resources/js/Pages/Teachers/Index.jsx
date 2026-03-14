@@ -1,7 +1,9 @@
 import Sidebar from "@/Components/Sidebar";
 import DashboardLayout from "@/Layouts/DashboardLayout";
+import { usePage } from "@inertiajs/react";
 
 function Teachers() {
+    const { user_name } = usePage().props;
     return (
         <main className="flex-1 p-6">
             <header className="mb-6 border-b pb-4">
@@ -26,6 +28,8 @@ function Teachers() {
                     <p>
                         <strong>Last Name:</strong>
                     </p>
+
+                    <p>The User name is {user_name}</p>
                 </div>
             </section>
         </main>
