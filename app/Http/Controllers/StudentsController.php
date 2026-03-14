@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -9,7 +10,8 @@ class StudentsController extends Controller
 {
     public function index()
     {
-        return inertia('Students/Index');
+        $students = Student::all();
+        return inertia('Students/Index', ['students' => $students]);
     }
 
     public function withData()
@@ -28,12 +30,11 @@ class StudentsController extends Controller
         ]);
     }
 
-    public function withOptionalParameters($name='Guest', $last_name='User')
+    public function withOptionalParameters($name = 'Guest', $last_name = 'User')
     {
-        
         return Inertia::render('Students/Index', [
-        'name' => $name,
-        'last_name' => $last_name,
+            'name' => $name,
+            'last_name' => $last_name,
         ]);
     }
 }

@@ -2,7 +2,9 @@ import { usePage } from "@inertiajs/react";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
 export default function Students() {
-    const { name, last_name } = usePage().props;
+    // const { name, last_name } = usePage().props;
+    const { students } = usePage().props;
+    console.log(students);
     const { t, i18n } = useTranslation();
     return (
         <DashboardLayout>
@@ -15,21 +17,30 @@ export default function Students() {
                         {t("welcome_student_section")}
                     </p>
                 </header>
-                <section className="space-y-4">
-                    <div className="bg-white p-6 rounded shadow">
-                        <p className="text-gray-700">
-                            {t("manage_student_description")}
-                        </p>
-                    </div>
-                    <div className="bg-white p-4 rounded shadow text-sm text-gray-600">
-                        <p>
-                            <strong>{t("name")}: {name}</strong>
-                        </p>
-                        <p>
-                            <strong>{t("last_name")}: {last_name}</strong>
-                        </p>
-                    </div>
-                </section>
+                <div className="overflow-x-auto bg-white rounded shadow p-4">
+                    <table className="min-w-full table-auto">
+                        <thead>
+                            <tr className="bg-gray-100 text-left text-sm font-medium text-gray-700">
+                                <th className="p-2">#</th>
+                                <th className="p-2">Name</th>
+                                <th className="p-2">Email</th>
+                                <th className="p-2">Gender</th>
+                                <th className="p-2">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {students.map((student, index) => (
+                                <tr>
+                                    <td className="p-2">{index + 1}</td>
+                                    <td className="p-2">{student.name}</td>
+                                    <td className="p-2">{student.email}</td>
+                                    <td className="p-2">{student.gender}</td>
+                                    <td className="p-2">{student.score}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </main>
         </DashboardLayout>
     );
