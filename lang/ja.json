@@ -1,0 +1,13 @@
+{
+    "topbar_mounted": "トップバーがマウントされました",
+    "teacher_page": "講師ページ",
+    "welcome_teacher_system": "講師管理システムへようこそ",
+    "student_page": "生徒ページ",
+    "welcome_student_section": "生徒管理セクションへようこそ",
+    "manage_student_description": "ここでは、生徒とそれに関連する情報を管理できます。",
+    "manage_teacher_description": "ここでは、講師とそれに関連する情報を管理できます。",
+    "name": "名前",
+    "last_name": "名字",
+    "language": "言語",
+    "welcome": "ようこそ！"
+}

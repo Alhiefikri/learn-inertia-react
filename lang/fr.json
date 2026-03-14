@@ -1,0 +1,13 @@
+{
+    "topbar_mounted": "Barre supérieure montée",
+    "teacher_page": "Page des Enseignants",
+    "welcome_teacher_system": "Bienvenue dans le système de gestion des enseignants",
+    "student_page": "Page des Étudiants",
+    "welcome_student_section": "Bienvenue dans la section de gestion des étudiants",
+    "manage_student_description": "Ici, vous pouvez gérer les étudiants et leurs informations associées.",
+    "manage_teacher_description": "Ici, vous pouvez gérer les enseignants et leurs informations associées.",
+    "name": "Nom",
+    "last_name": "Nom de famille",
+    "language": "Langue",
+    "welcome": "Bienvenue !"
+}

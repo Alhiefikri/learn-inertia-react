@@ -1,0 +1,13 @@
+{
+    "topbar_mounted": "Barra superior montada",
+    "teacher_page": "Página del Profesor",
+    "welcome_teacher_system": "Bienvenido al Sistema de Gestión de Profesores",
+    "student_page": "Página del Estudiante",
+    "welcome_student_section": "Bienvenido a la sección de gestión de estudiantes",
+    "manage_student_description": "Aquí puedes gestionar a los estudiantes dan su información relacionada.",
+    "manage_teacher_description": "Aquí puedes gestionar a los profesores dan su información relacionada.",
+    "name": "Nombre",
+    "last_name": "Apellido",
+    "language": "Idioma",
+    "welcome": "¡Bienvenido!"
+}

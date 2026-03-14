@@ -1,0 +1,13 @@
+{
+    "topbar_mounted": "Topbar mounted",
+    "teacher_page": "Teacher Page",
+    "welcome_teacher_system": "Welcome to Teacher Management System",
+    "student_page": "Student Page",
+    "welcome_student_section": "Welcome to Student Management Section",
+    "manage_student_description": "Here you can manage students and their related information.",
+    "manage_teacher_description": "Here you can manage teachers and their related information.",
+    "name": "Name",
+    "last_name": "Last Name",
+    "language": "Language",
+    "welcome": "Welcome!"
+}

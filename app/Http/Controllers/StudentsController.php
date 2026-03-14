@@ -15,8 +15,8 @@ class StudentsController extends Controller
     public function withData()
     {
         return inertia('Students/Index', [
-            'name' => 'alhie',
-            'last_name' => 'fikri',
+            'name' => 'Name',
+            'last_name' => 'Last Name',
         ]);
     }
 

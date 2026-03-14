@@ -2,6 +2,7 @@ import { Link, usePage } from "@inertiajs/react";
 
 export default function Sidebar() {
     const { url } = usePage();
+    const lang = localStorage.getItem("lang") || "en";
     const baseLinkClasses = "block p-2 rounded transition-colors duration-200";
     const activeClasses = "bg-blue-100 text-blue-700 font-semibold";
     const inactiveClasses = "text-gray-700 hover:bg-gray-200";
@@ -11,16 +12,16 @@ export default function Sidebar() {
             <ul className="space-y-2">
                 <li>
                     <Link
-                        href={route("students.list")}
-                        className={`${baseLinkClasses} ${url === "/students" ? activeClasses : inactiveClasses}`}
+                        href={`/students?lang=${lang}`}
+                        className={`${baseLinkClasses} ${url === `/students?lang=${lang}` ? activeClasses : inactiveClasses}`}
                     >
                         Student
                     </Link>
                 </li>
                 <li>
                     <Link
-                        href={route("teachers.list")}
-                        className={`${baseLinkClasses} ${url === "/teacers" ? activeClasses : inactiveClasses}`}
+                        href={`/teachers?lang=${lang}`}
+                        className={`${baseLinkClasses} ${url === `/teachers?lang=${lang}` ? activeClasses : inactiveClasses}`}
                     >
                         Teachers
                     </Link>

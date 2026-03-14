@@ -1,0 +1,13 @@
+{
+    "topbar_mounted": "Topbar terpasang",
+    "teacher_page": "Halaman Guru",
+    "welcome_teacher_system": "Selamat datang di Sistem Manajemen Guru",
+    "student_page": "Halaman Siswa",
+    "welcome_student_section": "Selamat datang di bagian manajemen siswa",
+    "manage_student_description": "Di sini Anda dapat mengelola siswa dan informasi terkait mereka.",
+    "manage_teacher_description": "Di sini Anda dapat mengelola guru dan informasi terkait mereka.",
+    "name": "Nama",
+    "last_name": "Nama Belakang",
+    "language": "Bahasa",
+    "welcome": "Selamat datang!"
+}
