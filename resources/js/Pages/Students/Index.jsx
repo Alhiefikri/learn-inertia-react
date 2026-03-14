@@ -1,4 +1,4 @@
-import { usePage } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
 export default function Students() {
@@ -6,6 +6,11 @@ export default function Students() {
     const { students } = usePage().props;
     console.log(students);
     const { t, i18n } = useTranslation();
+
+    const handlePageChange = (url) => {
+        if (url) router.visit(url);
+    };
+
     return (
         <DashboardLayout>
             <main className="flex-1 p-6">
@@ -29,7 +34,7 @@ export default function Students() {
                             </tr>
                         </thead>
                         <tbody>
-                            {students.map((student, index) => (
+                            {students.data.map((student, index) => (
                                 <tr>
                                     <td className="p-2">{index + 1}</td>
                                     <td className="p-2">{student.name}</td>
@@ -40,6 +45,18 @@ export default function Students() {
                             ))}
                         </tbody>
                     </table>
+
+                    <div>
+                        {students.links.map((link, idx) => (
+                            <button
+                                key={idx}
+                                disabled={!link.url}
+                                dangerouslySetInnerHTML={{ __html: link.label }}
+                                className={`px-3 py-1 rounded`}
+                                onClick={() => handlePageChange(link.url)}
+                            />
+                        ))}
+                    </div>
                 </div>
             </main>
         </DashboardLayout>
