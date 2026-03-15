@@ -8,10 +8,16 @@ use Inertia\Inertia;
 
 class StudentsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::paginate(10);
-        return inertia('Students/Index', ['students' => $students]);
+        $search = $request->input('search');
+        $students = Student::with('user:id,name')
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%");
+            })
+            ->paginate(10)
+            ->withQueryString();
+        return inertia('Students/Index', ['students' => $students, 'search' => $search]);
     }
 
     public function withData()

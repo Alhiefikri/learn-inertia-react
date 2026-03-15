@@ -1,12 +1,27 @@
 import { router, usePage } from "@inertiajs/react";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 export default function Students() {
     // const { name, last_name } = usePage().props;
-    const { students } = usePage().props;
+    const { students, search: initialSearch } = usePage().props;
     console.log(students);
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
+    const [search, setSearch] = useState(initialSearch || "");
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        router.get(
+            "students",
+            { search },
+            {
+                preserveState: true,
+                replace: true,
+            },
+        );
+    };
     const handlePageChange = (url) => {
         if (url) router.visit(url);
     };
@@ -22,6 +37,23 @@ export default function Students() {
                         {t("welcome_student_section")}
                     </p>
                 </header>
+
+                <form onSubmit={handleSearch} className="mb-4 flex gap-2">
+                    <input
+                        type="text"
+                        placeholder={t("Search students...")}
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="w-full md:w-1/3 px-3 py-2 border rounded"
+                    />
+                    <button
+                        type="submit"
+                        className="px-4 py2 bg-blue-600 text-white"
+                    >
+                        {t("Search")}
+                    </button>
+                </form>
+
                 <div className="overflow-x-auto bg-white rounded shadow p-4">
                     <table className="min-w-full table-auto">
                         <thead>
@@ -35,15 +67,20 @@ export default function Students() {
                         </thead>
                         <tbody>
                             {students.data.map((student, index) => (
-                                <tr key={student.id} className="border-b hover:bg-gray-50">
-                                    <td className="p-2">{students.from + index}</td>
+                                <tr
+                                    key={student.id}
+                                    className="border-b hover:bg-gray-50"
+                                >
+                                    <td className="p-2">
+                                        {students.from + index}
+                                    </td>
                                     <td className="p-2">{student.name}</td>
                                     <td className="p-2">{student.email}</td>
                                     <td className="p-2">{student.gender}</td>
                                     <td className="p-2">{student.score}</td>
                                 </tr>
                             ))}
-                        </tbody> 
+                        </tbody>
                     </table>
 
                     <div className="mt-4 flex flex-wrap justify-center gap-1">

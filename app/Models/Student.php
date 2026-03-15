@@ -9,4 +9,19 @@ class Student extends Model
 {
     /** @use HasFactory<\Database\Factories\StudentFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'name',
+        'email',
+        'age',
+        'date_of_birth',
+        'gender',
+        'score',
+        'image',
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
