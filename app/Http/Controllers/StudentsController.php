@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentStoreRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -16,27 +17,28 @@ class StudentsController extends Controller
                 $query->where('name', 'like', "%{$search}%")->orWhere('date_of_birth', 'like', "%{$search}%");
                 $query->where('name', 'like', "%{$search}%")->orWhere('age', 'like', "%{$search}%");
             })
+            ->latest()
             ->paginate(10)
             ->withQueryString();
         return inertia('Students/Index', ['students' => $students, 'search' => $search]);
     }
 
-    public function create(){
+    public function create()
+    {
         return Inertia::render('Students/Create');
     }
 
-    public function store(Request $request){
-        $student = new Student();
-        $student->name = $request->name;
-        $student->email = $request->email;
-        $student->age = $request->age;
-        $student->date_of_birth = $request->date_of_birth;
-        $student->gender = $request->gender;
-        $student->score = $request->score;
-        $student->user_id = 5;
-        $student->save();
+    public function store(StudentStoreRequest $request)
+    {
+        $validated = $request->validated();
+
+        $validated['user_id'] = 1;
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('students', 'public');
+        }
+
+        Student::create($validated);
 
         return redirect()->route('students.index');
     }
-
 }

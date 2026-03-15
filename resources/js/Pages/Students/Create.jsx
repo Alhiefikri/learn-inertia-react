@@ -2,7 +2,7 @@ import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useForm } from "@inertiajs/react";
 
 export default function CreateStudent() {
-    const { data, setData, post } = useForm({
+    const { data, setData, post, errors } = useForm({
         name: "",
         email: "",
         age: "",
@@ -42,6 +42,7 @@ export default function CreateStudent() {
                                 placeholder="Enter Name"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                             />
+                            {errors.name && <div>{errors.name}</div>}
                         </div>
                         <div className="col-span-full">
                             <label className="block text-gray-700 font-medium mb-1">
@@ -57,6 +58,7 @@ export default function CreateStudent() {
                                 placeholder="Enter email..."
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                             />
+                            {errors.email && <div>{errors.email}</div>}
                         </div>
                         <div className="">
                             <label className="block text-gray-700 font-medium mb-1">
@@ -70,6 +72,7 @@ export default function CreateStudent() {
                                 placeholder="Enter Age"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                             />
+                            {errors.age && <div>{errors.age}</div>}
                         </div>
                         <div className="">
                             <label className="block text-gray-700 font-medium mb-1">
@@ -85,6 +88,9 @@ export default function CreateStudent() {
                                 placeholder="Enter Age"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                             />
+                            {errors.date_of_birth && (
+                                <div>{errors.date_of_birth}</div>
+                            )}
                         </div>
 
                         <div className="">
@@ -102,6 +108,7 @@ export default function CreateStudent() {
                                 <option value="m">Male</option>
                                 <option value="f">Female</option>
                             </select>
+                            {errors.gender && <div>{errors.gender}</div>}
                         </div>
 
                         <div className="">
@@ -118,19 +125,25 @@ export default function CreateStudent() {
                                 placeholder="Enter Score"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                             />
+                            {errors.score && <div>{errors.score}</div>}
                         </div>
 
-                        {/* <div className="col-span-full">
+                        <div className="col-span-full">
                             <label className="block text-gray-700 font-medium mb-1">
                                 Image
                             </label>
                             <input
+                                name="image"
                                 type="file"
                                 accept="image/*"
+                                onChange={(e) =>
+                                    setData("image", e.target.files[0])
+                                }
                                 placeholder="Enter Score"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                             />
-                        </div> */}
+                            {errors.image && <div>{errors.name}</div>}
+                        </div>
 
                         <div className="col-span-full mt-4">
                             <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-200 text-lg font-semibold">
