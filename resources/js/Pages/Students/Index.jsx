@@ -35,24 +35,32 @@ export default function Students() {
                         </thead>
                         <tbody>
                             {students.data.map((student, index) => (
-                                <tr>
-                                    <td className="p-2">{index + 1}</td>
+                                <tr key={student.id} className="border-b hover:bg-gray-50">
+                                    <td className="p-2">{students.from + index}</td>
                                     <td className="p-2">{student.name}</td>
                                     <td className="p-2">{student.email}</td>
                                     <td className="p-2">{student.gender}</td>
                                     <td className="p-2">{student.score}</td>
                                 </tr>
                             ))}
-                        </tbody>
+                        </tbody> 
                     </table>
 
-                    <div>
+                    <div className="mt-4 flex flex-wrap justify-center gap-1">
                         {students.links.map((link, idx) => (
                             <button
                                 key={idx}
-                                disabled={!link.url}
+                                disabled={!link.url || link.active}
                                 dangerouslySetInnerHTML={{ __html: link.label }}
-                                className={`px-3 py-1 rounded`}
+                                className={`px-3 py-1 text-sm rounded border ${
+                                    link.active
+                                        ? "bg-blue-600 text-white border-blue-600"
+                                        : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+                                } ${
+                                    !link.url
+                                        ? "opacity-50 cursor-not-allowed"
+                                        : ""
+                                }`}
                                 onClick={() => handlePageChange(link.url)}
                             />
                         ))}
