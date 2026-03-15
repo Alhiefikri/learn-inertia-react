@@ -1,4 +1,4 @@
-import { router, usePage } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -55,6 +55,13 @@ export default function Students() {
                 </form>
 
                 <div className="overflow-x-auto bg-white rounded shadow p-4">
+                    <Link
+                        href={route("students.create")}
+                        className="inline-block mb-4 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700 transition"
+                    >
+                        {t("Create Students")}
+                    </Link>
+
                     <table className="min-w-full table-auto">
                         <thead>
                             <tr className="bg-gray-100 text-left text-sm font-medium text-gray-700">
