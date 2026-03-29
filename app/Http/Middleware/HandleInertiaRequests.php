@@ -41,6 +41,9 @@ class HandleInertiaRequests extends Middleware
             ],
             'locale' => app()->getLocale(),
             'user_name' => 'Tester',
+            'flash' => [
+                'success' => fn()=>$request->session()->get('success')
+            ]
         ];
     }
 }

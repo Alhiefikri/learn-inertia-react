@@ -4,7 +4,13 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 export default function Students() {
     // const { name, last_name } = usePage().props;
-    const { students, search: initialSearch } = usePage().props;
+    const {
+        students,
+        search: initialSearch,
+        sort,
+        direction,
+        flash,
+    } = usePage().props;
     console.log(students);
     const { t } = useTranslation();
 
@@ -22,13 +28,29 @@ export default function Students() {
             },
         );
     };
+
+    // const handleSort = (field) => {
+    //     const newDirection = sort ===
+    // }
+
     const handlePageChange = (url) => {
         if (url) router.visit(url);
     };
 
+    const [msg, setmsg] = useState(flash.success);
+
+    setTimeout(() => {
+        setmsg(null);
+    }, 2000);
+
     return (
         <DashboardLayout>
             <main className="flex-1 p-6">
+                {msg && (
+                    <div className="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded">
+                        {msg}
+                    </div>
+                )}
                 <header className="mb-6 border-b pb-4">
                     <h1 className="text-2xl font-bold text-gray-800">
                         {t("student_page")}
